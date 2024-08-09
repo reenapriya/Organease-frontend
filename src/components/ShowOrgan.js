@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react"
+
+
+
+import { useEffect, useState } from "react";
 import axios from "../config/axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { Table, Button, Container, Row, Col } from "reactstrap";
 import { useAuth } from "../context/UserContext";
 import moment from "moment";
-import { useNavigate } from "react-router-dom";
+import '../App.css'; // Import the custom CSS file
+import showorgan from '../Assests/show-org.jpg'
 
 export default function ShowOrgan() {
   const { organ, dispatch } = useAuth();
-  const { oid, id } = useParams();
-  console.log("oid", oid)
+  const { oid } = useParams();
   const [today, setToday] = useState(moment());
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -20,14 +24,12 @@ export default function ShowOrgan() {
             Authorization: localStorage.getItem("token"),
           },
         });
-        console.log("eee", response.data)
         dispatch({ type: "ORGAN", payload: { organ: response.data } });
       } catch (error) {
         console.error("Error fetching organ data:", error);
       }
     })();
 
-    // Update the current date every day
     const intervalId = setInterval(() => {
       setToday(moment());
     }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
@@ -45,38 +47,48 @@ export default function ShowOrgan() {
     return `${daysDiff} days left`;
   };
 
-  const handleEdit = (id, oid) => {
-    navigate(`/organUpdate/category/${oid}/organ/${id}`)
-    //navigate(`/organ-edit /${oid}/organ/${id}`)
+  const handleEdit = (id) => {
+    navigate(`/organUpdate/category/${oid}/organ/${id}`);
+  };
 
-  }
-
-  const handleRemove = async (id, oid) => {
-
+  const handleRemove = async (id) => {
     try {
       await axios.delete(`/organRemove/category/${oid}/organ/${id}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
       });
-      navigate("/my-centre")
-
+      navigate("/my-centre");
     } catch (error) {
-      console.error("Error deleting user:", error);
+      console.error("Error deleting organ:", error);
     }
+  };
 
-  }
+  const handleClick = () => {
+    navigate("/my-centre");
+  };
 
-const handleClick=()=>{
-  navigate("/my-centre")
-}
+
+  const backgroundStyle = {
+    backgroundImage: `url(${showorgan})`, // Use the imported image
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    height: '75vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+};
+
+
+
   return (
-    <div>
-      <h1>Show Organ</h1>
-      <table border="1">
+    <div style={backgroundStyle}>
+    <Container className="my-4">
+      <h1 className="text-center mb-4">Show Organ</h1>
+      <Table bordered responsive>
         <thead>
           <tr>
-            <th>Donor Name:</th>
+            <th>Donor Name</th>
             <th>Donor Age</th>
             <th>Donor Weight</th>
             <th>Blood Type</th>
@@ -84,13 +96,12 @@ const handleClick=()=>{
             <th>Preserve Start Date</th>
             <th>Preserve End Date</th>
             <th>Status</th>
-            <th>secretCode</th>
+            <th>Secret Code</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {organ.map((ele) => (
-
             <tr key={ele._id}>
               <td>{ele.dName}</td>
               <td>{ele.dAge}</td>
@@ -104,20 +115,20 @@ const handleClick=()=>{
               </td>
               <td>{ele.status}</td>
               <td>{ele.secretCode}</td>
-              <button onClick={() => { handleEdit(ele._id, ele.oid) }}>Edit</button>
-              <button onClick={() => { handleRemove(ele._id, ele.oid) }}>Remove</button>
+              <td>
+                <Button color="warning" onClick={() => handleEdit(ele._id)}>Edit</Button>
+                <Button color="danger" onClick={() => handleRemove(ele._id)}>Remove</Button>
+              </td>
             </tr>
-
           ))}
         </tbody>
-      </table>
-      <button onClick={handleClick}>Back</button>
+      </Table>
+      <Row className="justify-content-center">
+        <Col md="auto">
+          <Button color="secondary" onClick={handleClick}>Back</Button>
+        </Col>
+      </Row>
+    </Container>
     </div>
   );
 }
-
-
-// // {/* <h3>{ele.dName}</h3>
-// // <ul> <li key={ele._id}>{ele.dAge}</li>
-// //    <li >{ele.bloodType}</li>
-// //  </ul> */}

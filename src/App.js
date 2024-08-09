@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -23,10 +24,17 @@ import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
 import PatientManager from "./redux/Component/PatientManager";
 import PatientForm from "./redux/Component/PatientForm";
-
-import Request from "./components/Request"
+import Payment from './components/Payment';
+import Request from "./components/Request";
 import RequestHospitalSide from './components/RequestHospitalSide';
 import CentreSideRequest from './components/CentreSideRequest';
+import Success from "./components/Success";
+import Failure from "./components/Failure";
+import './App.css'; // Import your custom CSS
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function App() {
   const state = useSelector((state) => state);
   const { user, dispatch, isLoggedIn } = useAuth();
@@ -38,16 +46,27 @@ function App() {
     navigate("/");
   };
 
+ const centreToast=()=>{
+  toast("Your Account Successfully created !!!")
+ }
+const hospitalToast=()=>{
+  toast("Your Account Successfully created !!!")
+
+}
+
+
+
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">Organease Project</a>
+        <div className="container">
+          <Link className="navbar-brand" to="/">Organease Project</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav me-auto">
+            <ul className="navbar-nav ms-auto">
               {!isLoggedIn ? (
                 <>
                   <li className="nav-item">
@@ -108,7 +127,7 @@ function App() {
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/centreprofileform" element={
             <PrivateRoute permittedRoles={["Centre"]}>
-              <CentreProfileForm />
+              <CentreProfileForm toast={centreToast} />
             </PrivateRoute>
           } />
           <Route path="/centreprofileedit/:id" element={
@@ -118,9 +137,9 @@ function App() {
           } />
           <Route path="/hospitalprofile" element={
             <PrivateRoute permittedRoles={["Hospital"]}>
-              <HospitalProfile />
+              <HospitalProfile toast={hospitalToast} />
             </PrivateRoute>
-          } />
+           } />
           <Route path="/hospitalprofileedit/:id" element={
             <PrivateRoute permittedRoles={["Hospital"]}>
               <HospitalEdit />
@@ -170,7 +189,6 @@ function App() {
               <PatientManager />
             </PrivateRoute>
           } />
-
           <Route path="/add-patient" element={
             <PrivateRoute permittedRoles={["Hospital"]}>
               <PatientForm />
@@ -180,32 +198,33 @@ function App() {
             <PrivateRoute permittedRoles={["Hospital"]}>
               <PatientForm />
             </PrivateRoute>} />
-
-          
           <Route path="/request/:oid/:id" element={
             <PrivateRoute permittedRoles={["Hospital"]}>
               <Request />
             </PrivateRoute>
           } />
-          
           <Route path="/request" element={
             <PrivateRoute permittedRoles={["Hospital"]}>
               <Request />
             </PrivateRoute>
           } />
-
           <Route path="/request-hospital" element={
             <PrivateRoute permittedRoles={["Hospital"]}>
               <RequestHospitalSide />
             </PrivateRoute>
           } />
-
-        <Route path="/request-centre" element={
+          <Route path="/request-centre" element={
             <PrivateRoute permittedRoles={["Centre"]}>
               <CentreSideRequest />
             </PrivateRoute>
           } />
-    
+          <Route path="/payment/:id" element={
+            <PrivateRoute>
+              <Payment/>
+            </PrivateRoute>
+          }/>
+          <Route path="/success"  element={<Success/>}/>
+          <Route path="/failure"  element={<Failure/>}/>
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
           <Route path="/unauthorized" element={<UnAuthorized />} />

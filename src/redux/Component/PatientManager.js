@@ -1,11 +1,11 @@
 
-import { useSelector,useDispatch } from "react-redux";
-import { Link  } from "react-router-dom";
-import {useEffect} from "react"
-import PatientForm from "./PatientForm";
-
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchPatients } from "../Action/PatientAction";
-
+import PatientForm from "./PatientForm";
+import { ListGroup, ListGroupItem, Button } from 'reactstrap';
+//import showcat from "../../Assests/showcat.jpg"
 
 export default function PatientManager() {
     const dispatch = useDispatch();
@@ -16,20 +16,37 @@ export default function PatientManager() {
     }, [dispatch]);
 
     const patientList = Array.isArray(patients) ? patients : [];
+
+    // const backgroundStyle = {
+    //     backgroundImage: `url(${showcat})`, // Use the imported image
+    //     backgroundSize: 'cover',
+    //     backgroundPosition: 'center',
+    //     height: '75vh',
+    //     display: 'flex',
+    //     justifyContent: 'center',
+    //     alignItems: 'center'
+    // };
+    
+
     return (
-        <div>
-            <h1>Listing Patients - {patients.length}</h1>
-            <ul>
-                {patients.map((patient) => (
-                    <li key={patient._id}>
-                        {patient.pName} - {patient.docName}
-                        <Link to={`/edit-patient/${patient._id}`}>Edit</Link>
-                        
-                    </li>
-                ))}
-            </ul>
-            <PatientForm />
-           
+        <div className="patient-manager-container">
+            <div className="patient-list">
+                <h1>Listing Patients - {patientList.length}</h1>
+                <ListGroup>
+                    {patientList.map((patient) => (
+                        <ListGroupItem key={patient._id} className="d-flex justify-content-between align-items-center">
+                            {patient.pName} - {patient.docName}
+                            <Button color="primary" tag={Link} to={`/edit-patient/${patient._id}`}>
+                                Edit
+                            </Button>
+                        </ListGroupItem>
+                    ))}
+                </ListGroup>
+            </div>
+            <div className="patient-form">
+                <PatientForm />
+            </div>
         </div>
+       
     );
 }

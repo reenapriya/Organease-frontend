@@ -1,0 +1,10 @@
+.select-option {
+    max-height: 150px;  /* Max height for the dropdown */
+    overflow-y: auto;   /* Scrollbar when the list exceeds max height */
+  }
+  
+  .select-option option {
+    padding: 5px;  /* Reduce padding for each option */
+    font-size: 12px;  /* Reduce font size if needed */
+  }
+  

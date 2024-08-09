@@ -1,9 +1,11 @@
 
 
+import React, { useEffect, useState } from "react";
 import axios from "../config/axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { useAuth } from "../context/UserContext";
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import '../App.css'
 
 export default function Request() {
   const [centreProfile, setCentreProfile] = useState(null);
@@ -47,13 +49,8 @@ export default function Request() {
               Authorization: localStorage.getItem("token"),
             },
           });
-          console.log("hospitalOne",hospitalResponse.data)
           setHospital(hospitalResponse.data);
-          dispatch({type:"HOSPITALGETONE",payload:hospitalResponse.data})
-          
-
-
-
+          dispatch({ type: "HOSPITALGETONE", payload: hospitalResponse.data });
         }
       } catch (e) {
         console.log(e);
@@ -73,7 +70,8 @@ export default function Request() {
     const formData = {
       cName: centreProfile?.cName,
       cid: centreProfile?._id,
-      secretCode:organ.secretCode,
+      oprice: organ.oprice,
+      secretCode: organ.secretCode,
       pName: selectedPatient,
       hospital: {
         hName: hospital?.hName,
@@ -82,70 +80,57 @@ export default function Request() {
         place: hospital?.place,
       },
       hid: hospital?._id,
+      oid:organ._id
     };
 
     try {
-      console.log("Sending form data:", formData);
       const requestResponse = await axios.post("/requestcreate", formData, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
       });
-      
-      
-     
-      dispatch({type:"REQUEST",payload:{request:requestResponse.data}})
-      
-    
 
+      dispatch({ type: "REQUEST", payload: { request: requestResponse.data } });
 
-
-
-    navigate(`/request-hospital`);
-   
-
+      navigate(`/request-hospital`);
     } catch (error) {
       console.error("Error submitting request:", error);
     }
   };
 
   return (
-    <div>
+    <div className="request-container">
       <h1>Request !!</h1>
       {centreProfile && <h4>Centre Name: {centreProfile.cName}</h4>}
       <ul>
-      {organ ? (
-          <ul>
-            <li key={organ._id}>
-              <p>Organ Secret Code: {organ.secretCode}</p>
-              
-            </li>
-          </ul>
+        {organ ? (
+          <li>
+            <p>Organ Secret Code: {organ.secretCode}</p>
+          </li>
         ) : (
           <p>No organ available</p>
         )}
-        
       </ul>
-      <div>
-        <h4>Select a Patient</h4>
-        <select onChange={handlePatientChange}>
-          <option value="">Select a patient</option>
-          {patients.length > 0 ? (
-            patients.map((patient) => (
-              <option key={patient._id} value={patient._id}>
-                {patient.pName}
-              </option>
-            ))
-          ) : (
-            <option>No patients available</option>
-          )}
-        </select>
-      </div>
-      <div>
+      <Form>
+        <FormGroup>
+          <Label for="patientSelect">Select a Patient</Label>
+          <Input type="select" name="select" id="patientSelect" onChange={handlePatientChange}>
+            <option value="">Select a patient</option>
+            {patients.length > 0 ? (
+              patients.map((patient) => (
+                <option key={patient._id} value={patient._id}>
+                  {patient.pName}
+                </option>
+              ))
+            ) : (
+              <option>No patients available</option>
+            )}
+          </Input>
+        </FormGroup>
         <h4>Hospital Details</h4>
         {hospital ? (
           <ul>
-            <li key={hospital._id}>
+            <li>
               <p>Hospital Name: {hospital.hName}</p>
               <p>Hospital Email Id: {hospital.hEmail}</p>
               <p>Hospital Contact No: {hospital.contact}</p>
@@ -155,8 +140,10 @@ export default function Request() {
         ) : (
           <p>No hospital available</p>
         )}
-      </div>
-      <button onClick={handleSubmit}>Confirm</button>
+        <Button color="primary" onClick={handleSubmit}>Confirm</Button>
+      </Form>
     </div>
   );
 }
+
+

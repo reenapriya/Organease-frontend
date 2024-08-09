@@ -1,8 +1,12 @@
+
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "../config/axios";
 import { useAuth } from "../context/UserContext";
 import { Country, State, City } from 'country-state-city';
+import { Form, FormGroup, Label, Input, Button, Container, Row, Col, Card, CardBody, CardTitle } from 'reactstrap';
+import '../App.css'; // Custom CSS file
+import centeedit from "../Assests/centeedit.jpg"
 
 export default function CentreProfileEdit() {
     const { id } = useParams();
@@ -125,84 +129,142 @@ export default function CentreProfileEdit() {
         return <div>Loading...</div>;
     }
 
+    // Background image style
+    const backgroundStyle = {
+        backgroundImage: `url(${centeedit})`, // Use the imported image
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    };
+
+
     return (
-        <div>
-            <h2>Edit Centre Profile</h2>
-            <form onSubmit={handleSave}>
-                <label>Centre Name:</label>
-                <input
-                    type="text"
-                    value={cName}
-                    onChange={e => setcName(e.target.value)}
-                />
-                <br />
-                <br />
-                <label>Centre Email:</label>
-                <input
-                    type="text"
-                    value={cEmail}
-                    onChange={e => setcEmail(e.target.value)}
-                />
-                <br />
-                <br />
-                <label>Contact:</label>
-                <input
-                    type="text"
-                    value={contact}
-                    onChange={e => setContact(e.target.value)}
-                />
-                <br />
-                <br />
-                <input
-                    type="text"
-                    value={door}
-                    onChange={e => setDoor(e.target.value)}
-                    placeholder="Enter door no."
-                />
-                <br />
-                <br />
-                <input
-                    type="text"
-                    value={street}
-                    onChange={e => setStreet(e.target.value)}
-                    placeholder="Enter street name"
-                />
-                <br />
-                <br />
-                <select value={country} onChange={handleCountryChange}>
-                    <option value="">Select Country</option>
-                    {Country.getAllCountries().map((country) => (
-                        <option key={country.isoCode} value={country.isoCode}>{country.name}</option>
-                    ))}
-                </select>
-                <br />
-                <br />
-                <select value={state} onChange={handleStateChange}>
-                    <option value="">Select State</option>
-                    {states.map((state) => (
-                        <option key={state.isoCode} value={state.isoCode}>{state.name}</option>
-                    ))}
-                </select>
-                <br />
-                <br />
-                <select value={city} onChange={handleCityChange}>
-                    <option value="">Select City</option>
-                    {cities.map((city) => (
-                        <option key={city.isoCode} value={city.isoCode}>{city.name}</option>
-                    ))}
-                </select>
-                <br />
-                <br />
-                <input
-                    type="text"
-                    value={postalCode}
-                    onChange={e => setPostalCode(e.target.value)}
-                    placeholder="Enter postal code"
-                />
-                <br />
-                <br />
-                <button type="submit">Save</button>
-            </form>
+        <div style={backgroundStyle}>
+        <Container className="centre-profile-edit-container">
+            <Row className="justify-content-center">
+                <Col md={10} lg={8}>
+                    <Card className="centre-profile-card">
+                        <CardBody>
+                            <CardTitle tag="h2" className="text-center mb-4">Edit Centre Profile</CardTitle>
+                            <Form onSubmit={handleSave}>
+                                <FormGroup>
+                                    <Label for="cName">Centre Name:</Label>
+                                    <Input
+                                        type="text"
+                                        id="cName"
+                                        value={cName}
+                                        onChange={e => setcName(e.target.value)}
+                                        className="custom-input"
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="cEmail">Centre Email:</Label>
+                                    <Input
+                                        type="email"
+                                        id="cEmail"
+                                        value={cEmail}
+                                        onChange={e => setcEmail(e.target.value)}
+                                        className="custom-input"
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="contact">Contact:</Label>
+                                    <Input
+                                        type="text"
+                                        id="contact"
+                                        value={contact}
+                                        onChange={e => setContact(e.target.value)}
+                                        className="custom-input"
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="door">Door No:</Label>
+                                    <Input
+                                        type="text"
+                                        id="door"
+                                        value={door}
+                                        onChange={e => setDoor(e.target.value)}
+                                        placeholder="Enter door no."
+                                        className="custom-input"
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="street">Street Name:</Label>
+                                    <Input
+                                        type="text"
+                                        id="street"
+                                        value={street}
+                                        onChange={e => setStreet(e.target.value)}
+                                        placeholder="Enter street name"
+                                        className="custom-input"
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="country">Country:</Label>
+                                    <Input
+                                        type="select"
+                                        id="country"
+                                        value={country}
+                                        onChange={handleCountryChange}
+                                        className="custom-select"
+                                    >
+                                        <option value="">Select Country</option>
+                                        {Country.getAllCountries().map((country) => (
+                                            <option key={country.isoCode} value={country.isoCode}>{country.name}</option>
+                                        ))}
+                                    </Input>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="state">State:</Label>
+                                    <Input
+                                        type="select"
+                                        id="state"
+                                        value={state}
+                                        onChange={handleStateChange}
+                                        className="custom-select"
+                                    >
+                                        <option value="">Select State</option>
+                                        {states.map((state) => (
+                                            <option key={state.isoCode} value={state.isoCode}>{state.name}</option>
+                                        ))}
+                                    </Input>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="city">City:</Label>
+                                    <Input
+                                        type="select"
+                                        id="city"
+                                        value={city}
+                                        onChange={handleCityChange}
+                                        className="custom-select"
+                                    >
+                                        <option value="">Select City</option>
+                                        {cities.map((city) => (
+                                            <option key={city.isoCode} value={city.isoCode}>{city.name}</option>
+                                        ))}
+                                    </Input>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="postalCode">Postal Code:</Label>
+                                    <Input
+                                        type="text"
+                                        id="postalCode"
+                                        value={postalCode}
+                                        onChange={e => setPostalCode(e.target.value)}
+                                        placeholder="Enter postal code"
+                                        className="custom-input"
+                                    />
+                                </FormGroup>
+                                <Button type="submit" color="primary" className="custom-button">Save</Button>
+                            </Form>
+                        </CardBody>
+                    </Card>
+                </Col>
+            </Row>
+        </Container>
         </div>
     );
 }

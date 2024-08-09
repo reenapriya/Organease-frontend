@@ -1,10 +1,13 @@
 
 
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { addPatient, updatePatient } from "../Action/PatientAction";
 import axios from "../../config/axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import '../Component/custom.css'
+
 
 export default function PatientForm() {
     const { id } = useParams();
@@ -12,7 +15,7 @@ export default function PatientForm() {
     const navigate = useNavigate();
 
     const patients = useSelector((state) => state.patient.data);
-     const editingPatient = patients.find((patient) => patient._id === id);
+    const editingPatient = patients.find((patient) => patient._id === id);
 
     const [formData, setFormData] = useState({
         pName: "",
@@ -54,8 +57,8 @@ export default function PatientForm() {
             pAddress: "",
             docName: "",
         });
-      alert (" your patient account is created  i want to know click patient-form link again")
-       // navigate("/add-patient"); // Redirect to the add form page
+        alert("Your patient account is created. Click patient-form link again.");
+        // navigate("/add-patient"); // Redirect to the add form page
     };
 
     const handleChange = (e) => {
@@ -67,42 +70,47 @@ export default function PatientForm() {
     };
 
     return (
-        <div>
-            <h3>{editingPatient ? "Edit Patient Details" : "Fill Patient Details for Added "}</h3>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="pName">Enter Patient Name</label>
-                <input
-                    type="text"
-                    onChange={handleChange}
-                    name="pName"
-                    id="pName"
-                    value={formData.pName}
-                />
-                <br />
-                <br />
-                <label htmlFor="pAddress">Enter Patient Address</label>
-                <textarea
-                    onChange={handleChange}
-                    name="pAddress"
-                    id="pAddress"
-                    value={formData.pAddress}
-                />
-                <br />
-                <br />
-                <label htmlFor="docName">Enter Doctor Name</label>
-                <p>who handled this patient</p>
-                <input
-                    type="text"
-                    onChange={handleChange}
-                    name="docName"
-                    id="docName"
-                    value={formData.docName}
-                />
-                <br />
-                <br />
-                <input type="submit" value={editingPatient ? "Update" : "Save"} />
-            </form>
+        <div className="form-container">
+            <h3>{editingPatient ? "Edit Patient Details" : "Fill Patient Details For Add"}</h3>
+            <Form onSubmit={handleSubmit}>
+                <FormGroup>
+                    <Label for="pName" className="form-label">Enter Patient Name</Label>
+                    <Input
+                        type="text"
+                        name="pName"
+                        id="pName"
+                        value={formData.pName}
+                        onChange={handleChange}
+                        className="form-input"
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="pAddress" className="form-label">Enter Patient Address</Label>
+                    <Input
+                        type="textarea"
+                        name="pAddress"
+                        id="pAddress"
+                        value={formData.pAddress}
+                        onChange={handleChange}
+                        className="form-textarea"
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="docName" className="form-label">Enter Doctor Name</Label>
+                    <p>Who handled this patient</p>
+                    <Input
+                        type="text"
+                        name="docName"
+                        id="docName"
+                        value={formData.docName}
+                        onChange={handleChange}
+                        className="form-input"
+                    />
+                </FormGroup>
+                <Button type="submit" className="form-submit">
+                    {editingPatient ? "Update" : "Save"}
+                </Button>
+            </Form>
         </div>
     );
 }
-
