@@ -6,7 +6,7 @@ import { useAuth } from "../context/UserContext";
 import { Country, State, City } from 'country-state-city';
 import { Form, FormGroup, Label, Input, Button, Container, Row, Col, Card, CardBody, CardTitle } from 'reactstrap';
 import '../App.css'; // Custom CSS file
-import centeedit from "../Assests/centeedit.jpg"
+
 
 export default function CentreProfileEdit() {
     const { id } = useParams();
@@ -129,20 +129,10 @@ export default function CentreProfileEdit() {
         return <div>Loading...</div>;
     }
 
-    // Background image style
-    const backgroundStyle = {
-        backgroundImage: `url(${centeedit})`, // Use the imported image
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-    };
 
 
     return (
-        <div style={backgroundStyle}>
+      
         <Container className="centre-profile-edit-container">
             <Row className="justify-content-center">
                 <Col md={10} lg={8}>
@@ -265,7 +255,7 @@ export default function CentreProfileEdit() {
                 </Col>
             </Row>
         </Container>
-        </div>
+ 
     );
 }
 

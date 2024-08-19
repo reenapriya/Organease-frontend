@@ -9,8 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/UserContext";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import { Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
-import '../App.css'
-
+import '../App.css'; // Import your custom CSS
 
 const loginValidationSchema = yup.object({
     email: yup.string().required("Email is required").email("Invalid email address"),
@@ -72,8 +71,6 @@ export default function Login() {
         }
     });
 
-   
-
     // Form container style
     const formContainerStyle = {
         backgroundColor: 'rgba(255, 255, 255, 0.8)',
@@ -83,65 +80,53 @@ export default function Login() {
         width: '100%'
     };
 
-    // Custom CSS for labels and button
+    // Custom CSS for labels
     const customLabelStyle = {
         fontWeight: 'bold',
         color: '#333',
-        fontFamily:"Cambria",
-        fontWeight:"bold",
-        fontSize:"large"
+        fontFamily: "Cambria",
+        fontSize: "large"
     };
-
-    const customButtonStyle = {
-        backgroundColor: '#007bff',
-        borderColor: '#007bff',
-        color: 'success',
-        fontWeight: 'bold'
-        
-    };
-
 
     return (
-       
-            <div style={formContainerStyle} className="form-container">
-                <h1 className="text-center">Log in here!!!</h1>
-                {serverErrors && <Alert color="danger">{serverErrors}</Alert>}
-                <Form onSubmit={formik.handleSubmit}>
-                    <FormGroup>
-                        <Label for="email" style={customLabelStyle}>Enter Email</Label>
-                        <Input
-                            type="email"
-                            value={formik.values.email}
-                            name="email"
-                            id="email"
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            className={formik.touched.email && formik.errors.email ? 'is-invalid' : ''}
-                        />
-                        {formik.touched.email && formik.errors.email && <div className="text-danger">{formik.errors.email}</div>}
-                    </FormGroup>
+        <div style={formContainerStyle} className="form-container">
+            <h1 className="text-center">Log in here!!!</h1>
+            {serverErrors && <Alert color="danger">{serverErrors}</Alert>}
+            <Form onSubmit={formik.handleSubmit}>
+                <FormGroup>
+                    <Label for="email" style={customLabelStyle}>Enter Email</Label>
+                    <Input
+                        type="email"
+                        value={formik.values.email}
+                        name="email"
+                        id="email"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className={formik.touched.email && formik.errors.email ? 'is-invalid' : ''}
+                    />
+                    {formik.touched.email && formik.errors.email && <div className="text-danger">{formik.errors.email}</div>}
+                </FormGroup>
 
-                    <FormGroup>
-                        <Label for="password" style={customLabelStyle}>Enter Password</Label>
-                        <Input
-                            type="password"
-                            value={formik.values.password}
-                            name="password"
-                            id="password"
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            className={formik.touched.password && formik.errors.password ? 'is-invalid' : ''}
-                        />
-                        {formik.touched.password && formik.errors.password && <div className="text-danger">{formik.errors.password}</div>}
-                    </FormGroup>
+                <FormGroup>
+                    <Label for="password" style={customLabelStyle}>Enter Password</Label>
+                    <Input
+                        type="password"
+                        value={formik.values.password}
+                        name="password"
+                        id="password"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className={formik.touched.password && formik.errors.password ? 'is-invalid' : ''}
+                    />
+                    {formik.touched.password && formik.errors.password && <div className="text-danger">{formik.errors.password}</div>}
+                </FormGroup>
 
-                    <Button type="submit" color="success" outline>Login</Button>
-                </Form>
+                <Button type="submit" className="btn-success-custom" outline>Login</Button>
+            </Form>
 
-                <p className="mt-3 text-center">
-                    <Link to="/register">Create an account?</Link>
-                </p>
-            </div>
-        
+            <p className="mt-3 text-center">
+                <Link to="/register">Create an account?</Link>
+            </p>
+        </div>
     );
 }

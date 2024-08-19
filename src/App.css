@@ -1,818 +1,238 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #034455;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.select-option {
-  max-height: 100px;  /* Max height for the dropdown */
-  max-width: 500px;
-  overflow-y: auto; 
-  margin-bottom: 1rem;  /* Scrollbar when the list exceeds max height */
-}
-
-.select-option option {
-  padding: 2px;  /* Reduce padding for each option */
-  font-size: 16px;  /* Reduce font size if needed */
-}
-
-
-.submit-button {
-  background-color: #007bff;
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-}
-
-
-
-.container {
-  padding: 1rem;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-  font-family:  Helvetica;
-}
-
-h2 {
-  margin-bottom: 1.5rem;
-  font-family: Impact;
-}
-
-
-
-
-
-
-
-
-/* Limit the dropdown height and add a scrollbar */
-.custom-select {
-  max-height: 100px; 
-   /* Adjust the height as needed */
-   max-width: 100px;
-  overflow-y: auto;
-}
-.add-category-container {
-  margin-top: 50px;
-}
-
-.category-card {
-  background-color: #797b7d;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(234, 18, 18, 0.1);
-}
-
-.category-form {
-  padding: 30px;
-}
-
-.category-form h1 {
-  color: #343a40;
-}
-
-.category-form label {
-  color: #495057;
-  font-weight: bold;
-}
-
-.category-form .btn {
-  background-color: #007bff;
-  border-color: #007bff;
-  margin-top: 20px;
-  max-width: 100px;
-  max-height: 100px;
-  align-items: center;
-}
-
-.category-form .btn:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}
-/* CentreProfileEdit.css */
-.centre-profile-edit-container {
-  /* padding: 0.5rem;
-  background-image: none;
-   */
-   max-width: 200px;
-  margin: auto;
-  padding: 2rem;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.centre-profile-card {
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  align-content:center;
-  font-family: 'Arial Narrow Bold';
-  font-size: larger;
-  background-color: #eed8d8;
-}
-
-.custom-input, .custom-select {
-  border-radius: 0.25rem;
-  border: 1px solid #ced4da;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
-  max-width:200px;
-  align-content: center;
-  align-self: start;
-  font-family: Helvetica;
-  font-size:large;
-  
-}
-
-.custom-input:focus, .custom-select:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
-  align-content: center;
-  align-self: start;
-  font-family: Helvetica;
-  font-size:large;
-
-}
-
-.custom-button {
-  background-color: #007bff;
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-}
-
-.custom-button:hover {
-  background-color: #19ab09;
-  color: #eed8d8;
-}
-/* Dashboard.css */
-.dashboard-background {
-  
-    background-size: cover; /* Ensures the image covers the entire element */
-    background-position: top; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-attachment: fixed; /* Keeps the background fixed while scrolling */
-    width: 50vw; /* Ensures the width is 100% of the viewport width */
-    height: 50vh; /* Ensures the height is 100% of the viewport height */
-    display: flex;
-    align-items: center;
-    /* justify-content: center; */
-}
-
-.dashboard-container {
-  background-color: rgba(240, 241, 236, 0.9);
-  padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-position:center;
- 
-}
-
-.account-info {
-  border-right: 4px solid #ddd;
-  padding-right: 4rem;
-  font-variant: initial;
-  font-family:   Cochin;
-  font-weight:bolder;
-  font-size:larger;
-}
-
-.profile-info {
-  padding-left: 4rem;
-  font-variant: initial;
-  font-family: Cochin;
-  font-weight:bold;
-  font-size:large;
-
-}
-
-
-.back-button {
-  margin-top: 2rem;
-  background-color: #060606;
-
-}
-
-.account-info h2.mb-4 {
-  font-family:  'Times New Roman';
-  font-weight:bolder;
-  font-size:larger;
-  color:#b81782
-
-}
-
-.profile-info h3.mb-3{
-  font-family:  'Times New Roman';
-  font-weight:bolder;
-  font-size:larger;
-  color:#b81782
-
-}
-
-/* Container for the latest 3 requests */
-.latest-requests {
-  margin-left: auto; /* Ensures the latest requests are aligned to the right */
-  background-color: #f8f9fa; /* Light background color for contrast */
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
- 
-}
-
-.latest-requests h4 {
-  font-family: 'Times New Roman';
-  font-weight: bolder;
-  font-size: larger;
-  color: #b81782;
-}
-
-.request-item {
-  background-color: white;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-
 /* App.css */
-.background-style {
-  background: url('./Assests/home.jpg') no-repeat center center fixed;
-  background-size: contain; /* Adjusted from cover to contain */
-  background-position: center top; /* Ensures the image is centered and starts at the top */
-  min-height: 100vh;
-  width: 100%; /* Ensures the background takes up the full width */
-}
-
-@media screen and (min-width: 700px) {
-  .background-style {
-    background-size: cover; /* For larger screens, use cover to fill the screen */
-  }
-}
-
 
 .navbar {
-  border-bottom: 2px solid #ddd;
-  background-color: transparent; /* Inherit the background */
+  background-color: #333; /* Background color of the navbar */
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-brand {
-  font-weight: bold;
-  font-size: 2.5rem;
-  font-family: 'Arial Narrow Bold';
+  color: white; /* Brand text color */
+  font-size: 24px;
+  text-decoration: none;
 }
 
-.navbar-nav .nav-link {
-  margin-left: 1rem;
-  font-size: 1.5rem;
-  font-family: -apple-system;
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
 }
 
-.navbar-toggler {
-  border: none;
-}
-
-.navbar-toggler-icon {
-  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cline x1="3" y1="12" x2="21" y2="12"/%3E%3Cline x1="3" y1="6" x2="21" y2="6"/%3E%3Cline x1="3" y1="18" x2="21" y2="18"/%3E%3C/svg%3E');
+.nav-item {
+  margin: 0 10px;
 }
 
 .nav-link {
-  transition: color 0.3s ease;
+  color: white; /* Link text color */
+  font-size: 18px;
+  text-decoration: none;
 }
 
 .nav-link:hover {
-  color: #007bff;
+  color: #ddd; /* Hover effect for links */
 }
 
-/* //register */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
 
+.mt-4 {
+  margin-top: 2rem;
+}
+
+/* register  */
+/* Custom CSS for Register Component */
 .register-background {
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  width :cover;
   display: flex;
   justify-content: center;
   align-items: center;
-   background-color:rgb(248, 250, 248,0.999); 
-   padding-top: 50px;
+  height: 100vh;
+  background-color: #f8f9fa; /* Light gray background color */
+  background-position: center;
 }
 
 .register-form-container {
-  background-color: rgba(248, 250, 248, 0.999);
-  padding: 30px;
-  border-radius: 60px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
   width: 100%;
-  padding-top: 20px;
+  max-width: 500px;
+  background-color: #ffffff; /* White background */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-.register-form-container h1 {
-  font-family:Cambria ;
-  font-weight: bolder;
-  font-size: larger;
-  color: #070707;
-}
-
-.register-form-container .form-control {
-  margin-bottom: 15px;
-  border-radius: 5px;
-  color: #070707;
+h1 {
+  font-size: 1.8rem;
+  color: #343a40; /* Dark gray text */
   font-family: Cambria;
 }
 
-.register-form-container .form-check-label {
-  margin-right: 15px;
+.form-check-inline {
+  margin-right: 1rem;
+  font-family: Cambria;
+}
+
+.form-check-label {
   font-family:Cambria;
+  margin-left: 0.5rem;
 }
 
-.register-form-container .text-danger {
-  margin-top: -10px;
-  margin-bottom: 10px;
+.form-control {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
   font-family: Cambria;
+}
+
+.text-danger {
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  font-family: Cambria;
+}
+
+.btn {
+  width: 50%;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.btn:hover {
+  background-color: #23272b;
+  border-color: #23272b;
+}
+
+/* login */
+.btn-success-custom {
+  background-color: #28a745; /* success color */
+  border-color: #28a745;
+  color: #fff;
+  width: 75px;
   font-weight: bold;
-
 }
 
-.register-form-container .btn-primary {
-  background-color: #0d0d0e;
-  border-color: #0c0c0c;
-  font-family: 'Arial, sans-serif';
-  font-weight: bold;
-}
-.register-form-container .form-check-inline{
-  font-family: Cambria;
-  font-weight:bolder;
-  font-size: large;
-}
-/* 
-
-login */
-.form-container .text-center{
-  font-family: Cambria;
-  font-weight:bolder;
-  font-size: larger;
-
+.btn-success-custom:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
 }
 
-/* custom.css */
-
-body {
-  font-family: Arial, sans-serif;
-}
-
-.request-container {
-  max-width: 800px;
-  margin: 20px auto;
+/* centrerequest */
+/* Center container style */
+.container-custom {
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
-  border-radius: 10px;
-  background-color: #f8f9fa;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.request-container h1,
-.request-container h4 {
-  color: #ff3300;
-  margin-bottom: 20px;
-  font-family:  'Arial Narrow Bold';
-  font-weight: bolder;
-}
-
-.request-container ul {
-  list-style-type: none;
-  padding: 0;
-  font-family:  sans-serif;
-  font-size: medium;
-  font-weight: bolder;
-}
-
-.request-container li {
-  margin-bottom: 10px;
-}
-
-.request-container select,
-.request-container button {
+  border-radius: 50px;
+  max-width: 100%;
   width: 100%;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  font-size: 16px;
+  margin-top: 2rem;
 }
 
-.request-container button {
-  background-color: #06fe4d;
-  color: rgb(7, 7, 7);
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100px;
-  height: 50px;
+/* Card container style */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.request-container button:hover {
-  background-color: #0056b3;
-}
-/* //hospitalrequest */
-
-/* custom.css */
-
-body {
-  font-family: Arial, sans-serif;
+/* Card style */
+.card-custom {
+  width: 18rem;
+  margin-bottom: 1rem;
 }
 
-.request-container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #f8f9fa;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.request-container h3,
-.request-container h4 {
-  color: #510d51;
-  margin-bottom: 20px;
-}
-
-.request-container p {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.request-container .request-item {
-  border: 1px solid #000005;
-  border-radius: 5px;
-  padding: 15px;
-  margin-bottom: 20px;
-  background-color: #fff;
-}
-
-.request-container button {
-  background-color: #ff1e00;
+/* Card header style */
+.card-header-custom {
+  background-color: #068720;
   color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+  font-weight: bold;
+  font-family: Cambria;
 }
 
-.request-container button:hover {
-  background-color: #f20909;
-}
-
-.request-container .back-button {
-  margin-top: 20px;
-  background-color: #0c0d0d;
-}
-
-.request-container .back-button:hover {
-  background-color: #080909;
-}
-/* custom.css */
-
-body {
-  font-family: Arial, sans-serif;
-}
-
-.payment-container {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 10px;
+/* Card footer style */
+.card-footer-custom {
   background-color: #f8f9fa;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Cambria;
 }
 
-.payment-container h3 {
-  color: #007bff;
-  margin-bottom: 20px;
-}
-
-.payment-card {
-  border: 1px solid #dee2e6;
-  border-radius: 5px;
-  padding: 15px;
-  margin-bottom: 20px;
-  background-color: #fff;
-}
-
-.payment-card-title {
-  font-size: 24px;
-  color: #343a40;
-}
-
-.payment-card-text {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.payment-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.payment-button:hover {
-  background-color: #0056b3;
-}
-/* Custom CSS for the ShowOrgan component */
-
-.table th, .table td {
+/* Heading styles */
+h2, h3, h5 {
   text-align: center;
-  font-family: 'Segoe UI';
-  font-size: x-large;
-  font-weight: bold;
+  font-family: Cambria;
+}
+
+/* Form group check style */
+.form-group-check {
+  display: flex;
+  align-items: center;
+  font-family: Cambria;
+}
+
+.card-label-custom{
+  font-family: Cambria;
 
 }
 
-.table td, .table th {
-  vertical-align: middle;
-  font-family: sans-serif;
-  font-size: medium;
-  font-weight: bold;
-
+/* Alert style */
+.alert-custom {
+  margin-bottom: 1rem;
 }
 
-.table {
-  margin-top: 20px;
-  border-color: #060606;
+
+/* Scoped styles for MyCentre component */
+.mycentre-container {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
 }
 
-.button {
-  margin: 5px;
-
+.mycentre-image-container {
+  flex: 1;
+  background: url('./Assests/type.avif') no-repeat center center;
+  background-size: cover;
+  width: 500pvw;
 }
 
-/* //mycentre */
-/* Custom CSS for the MyCentre component */
+.mycentre-content-container {
+  flex: 2;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  overflow-y: auto;
+  width:50px;
+}
 
-.category-link {
+.mycentre-heading {
+  margin-bottom: 1.5rem;
+}
+
+.mycentre-list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+}
+
+.mycentre-category-link {
   text-decoration: none;
-  color: #12b318;
-  font-weight: bolder;
-  font-size: larger;
-  font-family: 'Open Sans', ;
+  color: #007bff;
+  font-weight: bold;
 }
 
-.category-link:hover {
-  color: #b300a7;
+.mycentre-category-link:hover {
   text-decoration: underline;
 }
 
-.list-group-item {
-  margin-bottom: 10px;
-  border-radius: 0.25rem;
-  transition: background-color 0.2s;
+.mycentre-btn-info-custom {
+  background-color: #17a2b8;
+  border: none;
+  color: white;
 }
 
-.list-group-item:hover {
-  background-color: #f8f9fa;
-}
-
-.button {
-  margin-left: 10px;
-  background-color:#d2620c;
-}
-
-/* General Styles */
-body {
-  background-color: #f8f9fa;
-}
-
-/* Form Styling  centreform*/
-form {
-  background: #ffffff;
-  padding: 0.5rem; 
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-form input, form select {
-  margin-bottom: 0.5rem;
-}
-
-h2 {
-  color: #333;
-}
-
-.alert {
-  margin-bottom: 0.5rem;
-}
-
-.alert-heading {
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-
-
-/* General Styles */
-body {
-  background-color: #f8f9fa;
-}
-
-/* Card Styling */
-.card {
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.card-body {
-  padding: 1.5rem;
-}
-
-/* Form Styling */
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.text-center {
-  text-align: center;
-  font-family: sans-serif;
-  font-size: larger;
-  font-weight:bolder;
-}
-
-.alert {
-  margin-bottom: 1rem;
-}
-
-.alert-heading {
-  font-size: 1.2rem;
-  font-weight: bolder;
-  font-family: Impact;
-}
-/* 
-oranedit */
-/* OrganEdit.css */
-
-.organ-edit-container {
-  margin-top: 20px;
-  padding: 20px;
-}
-
-h3 {
-  margin-bottom: 20px;
-  font-family: Impact;
-  font-size: larger;
-  font-weight: bolder;
-}
-
-.form-group label {
-  font-weight: bold;
-  font-family: 'Segoe UI';
-  font-size: medium;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-button {
-  margin-top: 20px;
-}
-/* 
-hospitaledit */
-/* HospitalEdit.css */
-
-/* app.css */
-
-
-.label-style {
-  font-family: Cochin; /* Ensure the font family is correct */
-}
-
-h2 {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  font-weight: bold;
-}
-
-button {
-  margin-top: 20px;
-}
-/* 
-showcentre */
-.mt-5{
-  background-position:center;
-  width:500px;
-  padding: 2px;;
-
-}
-
-/* //hospital-profile */
-
-/* App.css */
-.container-custom {
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.form-header {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-family: 'Arial Narrow Bold';
-  font-size: medium;
-  
-}
-
-.error-list {
-  color: red;
-  list-style-type: none;
-  padding: 0;
-}
-
-/* home */
-
-/* App.css */
-.background-style {
-  background-size: cover;
-  /*background-position: center;*/
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.heading {
-  margin-top: 20px; /* Adjust as needed */
-  font-weight: bolder;
-  font-family:  'Arial Narrow Bold';
-  font-size: larger;
-  color: rgb(246, 5, 5); /* Or any color that contrasts with the background */
-}
-
-/* dashboard */
-
-.dashboard-background {
-  background-color: #f5f5f5; /* Light background color */
-  min-height: 150vh; /* Ensure it covers the whole viewport height */
-}
-
-.dashboard-container {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.card {
-  margin-bottom: 20px;
-}
-
-.latest-requests {
-  position:relative;
-  top: 20px;
-  right: 20px;
-  width: 300px;
-}
-
-.card-body {
-  padding: 15px;
+.mycentre-btn-info-custom:hover {
+  background-color: #138496;
 }

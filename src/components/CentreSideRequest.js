@@ -1,5 +1,4 @@
 
-
 import { useEffect, useState } from "react";
 import axios from "../config/axios";
 import { useAuth } from "../context/UserContext";
@@ -72,19 +71,11 @@ export default function CentreSideRequest() {
     }
   };
 
-  const formContainerStyle = {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    padding: '20px',
-    borderRadius: '10px',
-    maxWidth: '500px',
-    width: '100%'
-  };
-
   return (
-    <Container className="mt-5" style={formContainerStyle}>
-      <h4 className="text-center mb-4">Requests from Hospital</h4>
+    <Container className="container-custom">
+      <h2 className="mb-4">Requests from Hospital</h2>
       {serverErrors && (
-        <Alert color="danger">
+        <Alert color="danger" className="alert-custom">
           <h4 className="alert-heading">Error</h4>
           <ul>
             {serverErrors.map((error, index) => (
@@ -94,61 +85,65 @@ export default function CentreSideRequest() {
         </Alert>
       )}
 
-      <h5>Pending Requests</h5>
-      {pendingRequests.length > 0 ? (
-        pendingRequests.map((request) => (
-          <Card key={request._id} className="my-2" style={{ width: '18rem' }}>
-            <CardHeader>{request.hospital.hName}</CardHeader>
-            <CardBody>
-              <CardTitle tag="h5">Hospital Details</CardTitle>
-              <CardText><strong>Hospital Email:</strong> {request.hospital.hEmail}</CardText>
-              <CardText><strong>Secret Code:</strong> {request.secretCode}</CardText>
-              <FormGroup check>
-                <Label check>
-                  <Input 
-                    type="checkbox" 
-                    checked={request.isApproved} 
-                    onChange={(e) => handleCheckboxChange(request._id, e.target.checked)} 
-                  />
-                  {' '}
-                  Is Approved
-                </Label>
-              </FormGroup>
-            </CardBody>
-            <CardFooter>Pending</CardFooter>
-          </Card>
-        ))
-      ) : (
-        <p>No pending requests</p>
-      )}
+      <h3>Pending Requests</h3>
+      <div className="card-container">
+        {pendingRequests.length > 0 ? (
+          pendingRequests.map((request) => (
+            <Card key={request._id} className="card-custom">
+              <CardHeader className="card-header-custom">{request.hospital.hName}</CardHeader>
+              <CardBody>
+                <CardTitle tag="h5">Hospital Details</CardTitle>
+                <CardText><strong  className="card-label-custom">Hospital Email:</strong> {request.hospital.hEmail}</CardText>
+                <CardText><strong  className="card-label-custom">Secret Code:</strong> {request.secretCode}</CardText>
+                <FormGroup className="form-group-check">
+                  <Label check>
+                    <Input 
+                      type="checkbox" 
+                      checked={request.isApproved} 
+                      onChange={(e) => handleCheckboxChange(request._id, e.target.checked)} 
+                    />
+                    {' '}
+                    Is Approved
+                  </Label>
+                </FormGroup>
+              </CardBody>
+              <CardFooter className="card-footer-custom">Pending</CardFooter>
+            </Card>
+          ))
+        ) : (
+          <p>No pending requests</p>
+        )}
+      </div>
 
-      <h5>Approved Requests</h5>
-      {approvedRequests.length > 0 ? (
-        approvedRequests.map((request) => (
-          <Card key={request._id} className="my-2" style={{ width: '18rem' }}>
-            <CardHeader>{request.hospital.hName}</CardHeader>
-            <CardBody>
-              <CardTitle tag="h5">Hospital Details</CardTitle>
-              <CardText><strong>Hospital Email:</strong> {request.hospital.hEmail}</CardText>
-              <CardText><strong>Secret Code:</strong> {request.secretCode}</CardText>
-              <FormGroup check>
-                <Label check>
-                  <Input 
-                    type="checkbox" 
-                    checked={request.isApproved} 
-                    onChange={(e) => handleCheckboxChange(request._id, e.target.checked)} 
-                  />
-                  {' '}
-                  Is Approved
-                </Label>
-              </FormGroup>
-            </CardBody>
-            <CardFooter>Approved</CardFooter>
-          </Card>
-        ))
-      ) : (
-        <p>No approved requests</p>
-      )}
+      <h3>Approved Requests</h3>
+      <div className="card-container">
+        {approvedRequests.length > 0 ? (
+          approvedRequests.map((request) => (
+            <Card key={request._id} className="card-custom">
+              <CardHeader className="card-header-custom">{request.hospital.hName}</CardHeader>
+              <CardBody>
+                <CardTitle tag="h5">Hospital Details</CardTitle>
+                <CardText><strong  className="card-label-custom">Hospital Email:</strong> {request.hospital.hEmail}</CardText>
+                <CardText><strong className="card-label-custom">Secret Code:</strong> {request.secretCode}</CardText>
+                <FormGroup className="form-group-check">
+                  <Label check>
+                    <Input 
+                      type="checkbox" 
+                      checked={request.isApproved} 
+                      onChange={(e) => handleCheckboxChange(request._id, e.target.checked)} 
+                    />
+                    {' '}
+                    Is Approved
+                  </Label>
+                </FormGroup>
+              </CardBody>
+              <CardFooter className="card-footer-custom">Approved</CardFooter>
+            </Card>
+          ))
+        ) : (
+          <p>No approved requests</p>
+        )}
+      </div>
     </Container>
   );
 }

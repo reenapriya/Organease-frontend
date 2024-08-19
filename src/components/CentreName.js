@@ -4,7 +4,7 @@ import axios from "../config/axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Card, CardBody, CardTitle, CardText, ListGroup, ListGroupItem } from 'reactstrap';
-import centreName from "../Assests/centreName.png"
+
 
 export default function CentreName() {
     const navigate = useNavigate();
@@ -33,20 +33,10 @@ export default function CentreName() {
     }
 
 
-    // Background image style
-    const backgroundStyle = {
-        backgroundImage: `url(${centreName})`, // Use the imported image
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        
-    };
+    
 
     return (
-        <div style={backgroundStyle}>
+        
         <Container className="mt-5" >
             <Row>
                 <Col md={{ size: 8, offset: 2 }}>
@@ -75,6 +65,6 @@ export default function CentreName() {
                 </Col>
             </Row>
         </Container>
-        </div>
+    
     );
 }

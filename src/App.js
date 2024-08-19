@@ -33,7 +33,6 @@ import Failure from "./components/Failure";
 import './App.css'; // Import your custom CSS
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import home from './Assests/home.jpg';
 
 
 function App() {
@@ -58,7 +57,7 @@ const hospitalToast=()=>{
 
 
 return (
-  <div style={{ background: `url(${home}) no-repeat center center fixed`, backgroundSize: 'cover', minHeight: '100vh' }}>
+  <div style={{ minHeight: '100vh' }}>
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container">
         <Link className="navbar-brand" to="/">Organease Project</Link>

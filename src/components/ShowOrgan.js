@@ -8,7 +8,7 @@ import { Table, Button, Container, Row, Col } from "reactstrap";
 import { useAuth } from "../context/UserContext";
 import moment from "moment";
 import '../App.css'; // Import the custom CSS file
-import showorgan from '../Assests/show-org.jpg'
+
 
 export default function ShowOrgan() {
   const { organ, dispatch } = useAuth();
@@ -69,20 +69,11 @@ export default function ShowOrgan() {
   };
 
 
-  const backgroundStyle = {
-    backgroundImage: `url(${showorgan})`, // Use the imported image
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    height: '75vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-};
 
 
 
   return (
-    <div style={backgroundStyle}>
+    
     <Container className="my-4">
       <h1 className="text-center mb-4">Show Organ</h1>
       <Table bordered responsive>
@@ -129,6 +120,6 @@ export default function ShowOrgan() {
         </Col>
       </Row>
     </Container>
-    </div>
+ 
   );
 }
