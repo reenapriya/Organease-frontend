@@ -201,6 +201,7 @@ h2 {
   border-radius: 0.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-position:center;
+ 
 }
 
 .account-info {
@@ -243,23 +244,64 @@ h2 {
   color:#b81782
 
 }
+
+/* Container for the latest 3 requests */
+.latest-requests {
+  margin-left: auto; /* Ensures the latest requests are aligned to the right */
+  background-color: #f8f9fa; /* Light background color for contrast */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ 
+}
+
+.latest-requests h4 {
+  font-family: 'Times New Roman';
+  font-weight: bolder;
+  font-size: larger;
+  color: #b81782;
+}
+
+.request-item {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
 /* App.css */
+.background-style {
+  background: url('./Assests/home.jpg') no-repeat center center fixed;
+  background-size: contain; /* Adjusted from cover to contain */
+  background-position: center top; /* Ensures the image is centered and starts at the top */
+  min-height: 100vh;
+  width: 100%; /* Ensures the background takes up the full width */
+}
+
+@media screen and (min-width: 700px) {
+  .background-style {
+    background-size: cover; /* For larger screens, use cover to fill the screen */
+  }
+}
+
+
 .navbar {
   border-bottom: 2px solid #ddd;
+  background-color: transparent; /* Inherit the background */
 }
 
 .navbar-brand {
   font-weight: bold;
   font-size: 2.5rem;
   font-family: 'Arial Narrow Bold';
-  
 }
 
 .navbar-nav .nav-link {
   margin-left: 1rem;
   font-size: 1.5rem;
   font-family: -apple-system;
-  
 }
 
 .navbar-toggler {
@@ -268,13 +310,6 @@ h2 {
 
 .navbar-toggler-icon {
   background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cline x1="3" y1="12" x2="21" y2="12"/%3E%3Cline x1="3" y1="6" x2="21" y2="6"/%3E%3Cline x1="3" y1="18" x2="21" y2="18"/%3E%3C/svg%3E');
-}
-
-.container {
-  margin-top: 20px;
-  max-width: 900vw;
-  max-height: 200vh;
-
 }
 
 .nav-link {
@@ -739,7 +774,7 @@ showcentre */
 /* App.css */
 .background-style {
   background-size: cover;
-  background-position: center;
+  /*background-position: center;*/
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -753,4 +788,31 @@ showcentre */
   font-family:  'Arial Narrow Bold';
   font-size: larger;
   color: rgb(246, 5, 5); /* Or any color that contrasts with the background */
+}
+
+/* dashboard */
+
+.dashboard-background {
+  background-color: #f5f5f5; /* Light background color */
+  min-height: 150vh; /* Ensure it covers the whole viewport height */
+}
+
+.dashboard-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.latest-requests {
+  position:relative;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+}
+
+.card-body {
+  padding: 15px;
 }

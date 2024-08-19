@@ -33,6 +33,7 @@ import Failure from "./components/Failure";
 import './App.css'; // Import your custom CSS
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import home from './Assests/home.jpg';
 
 
 function App() {
@@ -56,71 +57,71 @@ const hospitalToast=()=>{
 
 
 
-
-  return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container">
-          <Link className="navbar-brand" to="/">Organease Project</Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
-              {!isLoggedIn ? (
-                <>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/">Home</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/register">Sign Up</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/login">Login</Link>
-                  </li>
-                </>
-              ) : (
-                <>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/dashboard">DashBoard</Link>
-                  </li>
-                  {user?.role === 'Centre' && (
-                    <>
-                      <li className="nav-item">
-                        <Link className="nav-link" to="/add-item">Add Item</Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link className="nav-link" to="/catShowOne/:id">My Centre</Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link className="nav-link" to="/request-centre">Show Request</Link>
-                      </li>
-                    </>
-                  )}
-                  {user?.role === 'Hospital' && (
-                    <>
-                      <li className="nav-item">
-                        <Link className="nav-link" to="/show-centre">Show Centre</Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link className="nav-link" to="/patient-form">Patient Form</Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link className="nav-link" to="/request-hospital">Show Request</Link>
-                      </li>
-                    </>
-                  )}
-                  <li className="nav-item">
-                    <Link className="nav-link" to="#" onClick={handleLogout}>Logout</Link>
-                  </li>
-                </>
-              )}
-            </ul>
-          </div>
+return (
+  <div style={{ background: `url(${home}) no-repeat center center fixed`, backgroundSize: 'cover', minHeight: '100vh' }}>
+    <nav className="navbar navbar-expand-lg navbar-light">
+      <div className="container">
+        <Link className="navbar-brand" to="/">Organease Project</Link>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            {!isLoggedIn ? (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/">Home</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/register">Sign Up</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login">Login</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/dashboard">DashBoard</Link>
+                </li>
+                {user?.role === 'Centre' && (
+                  <>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/add-item">Add Item</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/catShowOne/:id">My Centre</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/request-centre">Show Request</Link>
+                    </li>
+                  </>
+                )}
+                {user?.role === 'Hospital' && (
+                  <>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/show-centre">Show Centre</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/patient-form">Patient Form</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/request-hospital">Show Request</Link>
+                    </li>
+                  </>
+                )}
+                <li className="nav-item">
+                  <Link className="nav-link" to="#" onClick={handleLogout}>Logout</Link>
+                </li>
+              </>
+            )}
+          </ul>
         </div>
-      </nav>
-      <div className="container mt-4">
-        <Routes>
+      </div>
+    </nav>
+    <div className="container mt-4">
+      <Routes>
+      
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
@@ -140,7 +141,7 @@ const hospitalToast=()=>{
               <HospitalProfile toast={hospitalToast} />
             </PrivateRoute>
            } />
-          <Route path="/hospitalprofileedit/:id" element={
+           <Route path="/hospitalprofileedit/:id" element={
             <PrivateRoute permittedRoles={["Hospital"]}>
               <HospitalEdit />
             </PrivateRoute>
@@ -168,7 +169,7 @@ const hospitalToast=()=>{
           <Route path="/organUpdate/category/:oid/organ/:id" element={
             <PrivateRoute permittedRoles={["Centre"]}>
               <OrganEdit />
-            </PrivateRoute>
+              </PrivateRoute>
           } />
           <Route path="/my-centre" element={
             <PrivateRoute permittedRoles={["Centre"]}>
@@ -197,7 +198,7 @@ const hospitalToast=()=>{
           <Route path="/edit-patient/:id" element={
             <PrivateRoute permittedRoles={["Hospital"]}>
               <PatientForm />
-            </PrivateRoute>} />
+              </PrivateRoute>} />
           <Route path="/request/:oid/:id" element={
             <PrivateRoute permittedRoles={["Hospital"]}>
               <Request />
@@ -228,10 +229,12 @@ const hospitalToast=()=>{
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
           <Route path="/unauthorized" element={<UnAuthorized />} />
-        </Routes>
-      </div>
+      </Routes>
     </div>
-  );
+  </div>
+);
+
+
 }
 
 export default App;
