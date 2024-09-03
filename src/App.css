@@ -236,3 +236,339 @@ h2, h3, h5 {
 .mycentre-btn-info-custom:hover {
   background-color: #138496;
 }
+
+/* centreedit  */
+/* CenterProfileEdit Modal Styles */
+.form-containerEdit {
+  background-color: #f8f9fa; /* Light background color */
+  border-radius: 8px;
+  border-color: #23272b;
+  padding: 20px;
+}
+
+.label-style {
+  font-weight: bolder;
+  font-family:Georgia,serif;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.modal-header {
+  background-color: #007bff; /* Blue header color */
+  color: #fff;
+  border-bottom: 1px solid #007bff;
+  font-family: Cambria;
+
+}
+
+.modal-header .modal-title {
+  font-size: 1.5rem;
+  font-family: Cambria;
+}
+
+.modal-body {
+  padding: 1rem 2rem;
+  font-family: Cambria;
+}
+
+.modal-footer {
+  padding: 1rem 2rem;
+  border-top: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+  font-family: Cambria;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  font-family: Cambria;
+}
+
+.form-group .form-control {
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  box-shadow: none;
+}
+
+.form-group .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Address Form Styles */
+#address, #country, #state, #city, #postalCode {
+  margin-bottom: 1rem;
+  font-family: Cambria;
+}
+
+#country, #state, #city {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#country option, #state option, #city option {
+  padding: 10px;
+}
+
+
+/* Dashboard Background */
+.dashboard-background {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding-top: 20px;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Card Styling */
+.card {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.card-title {
+  font-family: 'Cambria', serif;
+  font-size: 1.25rem;
+  color: #343a40;
+}
+
+.card-text {
+  font-family: 'Cambria', serif;
+  font-size: 1rem;
+  color: #495057;
+}
+
+.mb-4, .mt-4 {
+  margin-bottom: 1.5rem !important;
+  margin-top: 1.5rem !important;
+  
+}
+
+/* Latest Requests Card */
+.latest-requests {
+  background-color: #fff;
+  border-color: #ced4da;
+}
+
+.latest-requests .card-title {
+  font-family: 'Cambria', serif;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Button Customization */
+button {
+  font-family: 'Cambria', serif;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+button.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+button.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  width: 10vw;
+}
+
+button.btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+button.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* 
+addcategory */
+
+/* General Container Styling */
+.choose-category-container {
+  margin-top: 50px;
+}
+
+/* Card Styling */
+.category-card {
+  background-color: #f8f9fa; /* Light background */
+  border-radius: 10px; /* Rounded corners */
+  border: none; /* Remove default border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px;
+}
+
+/* Card Title Styling */
+.category-card .card-title {
+  font-family: 'Cambria'; /* Cambria font */
+  color: #343a40; /* Darker text color */
+  font-size: larger;
+  font-weight: bolder;
+}
+
+/* Form Styling */
+.category-form {
+  margin-top: 20px;
+}
+
+.add-category-form {
+  margin-top: 15px;
+  background-color: #e9ecef; /* Light grey background for form */
+  padding: 15px;
+  border-radius: 8px; /* Rounded corners */
+}
+
+/* Label Styling */
+.category-form label,
+.add-category-form label {
+  font-family: 'Cambria'; /* Cambria font */
+  color: #495057; /* Slightly darker grey */
+  font-weight: bolder;
+}
+
+/* Input Field Styling */
+.category-form input,
+.add-category-form input,
+.category-form select {
+  font-family: 'Cambria', serif; /* Cambria font */
+  color: #343a40; /* Darker text */
+  border-radius: 5px; /* Rounded input corners */
+  padding: 10px;
+  border: 1px solid #ced4da; /* Light border */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+}
+
+.category-form button,
+.add-category-form button {
+  font-family: 'Cambria', serif; /* Cambria font */
+  padding: 10px 20px;
+  border-radius: 5px; /* Rounded button corners */
+  font-weight: bold;
+  transition: background-color 0.3s ease; /* Smooth transition */
+  display: inline-block; /* Ensures button width is content-based */
+  width: auto; /* Default width */
+ min-width: 150px; /* Ensure the button isn't too small */
+  max-width: 150px; /* Ensure the button isn't too wide */
+  
+}
+
+.category-form button[type="submit"],
+.add-category-form button {
+  background-color: #1cbc1c; /* Primary blue */
+  color: #ffffff; /* White text */
+  width: 50px;
+}
+
+.category-form button[type="submit"]:hover,
+.add-category-form button:hover {
+  background-color: #13c725; /* Darker blue on hover */
+}
+
+.category-form button[type="button"] {
+  background-color: #105999; /* Secondary grey */
+  color: #ffffff; /* White text */
+}
+
+.category-form button[type="button"]:hover {
+  background-color: #5a6268; /* Darker grey on hover */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .choose-category-container {
+    margin-top: 30px;
+  }
+
+  .category-card {
+    padding: 15px;
+  }
+
+  .category-form input,
+  .add-category-form input,
+  .category-form select {
+    padding: 8px;
+  }
+
+  .category-form button,
+  .add-category-form button {
+    padding: 8px 16px;
+  }
+}
+
+/* Button Container Styling */
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Aligns the button to the right */
+  margin-top: 20px; /* Space between form elements and button */
+}
+
+/* centreform */
+.form-control-custom {
+  font-family: 'Cambria', serif;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+h2 {
+  color: #333;
+}
+
+.alert {
+  font-size: 14px;
+}
+
+button {
+  font-family: 'Cambria', serif;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+
+/* patient fornm */
+.visually-hidden{
+  color:green
+}

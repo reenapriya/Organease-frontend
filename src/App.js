@@ -128,6 +128,7 @@ return (
           <Route path="/centreprofileform" element={
             <PrivateRoute permittedRoles={["Centre"]}>
               <CentreProfileForm toast={centreToast} />
+              <ToastContainer />
             </PrivateRoute>
           } />
           <Route path="/centreprofileedit/:id" element={
@@ -138,6 +139,7 @@ return (
           <Route path="/hospitalprofile" element={
             <PrivateRoute permittedRoles={["Hospital"]}>
               <HospitalProfile toast={hospitalToast} />
+              <ToastContainer />
             </PrivateRoute>
            } />
            <Route path="/hospitalprofileedit/:id" element={

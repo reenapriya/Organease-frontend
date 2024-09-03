@@ -194,10 +194,7 @@ export default function MyCentre() {
                                     <Link to={`/organShow/category/${ele._id}`} className="mycentre-category-link">
                                         {ele.catName}
                                     </Link>
-                                    {/* Optional: Add button if needed */}
-                                    {/* <Button color="info" className="mycentre-btn-info-custom" tag={Link} to={`/organShow/category/${ele._id}`}>
-                                        View Details
-                                    </Button> */}
+                                 
                                 </ListGroupItem>
                             ))}
                         </ListGroup>

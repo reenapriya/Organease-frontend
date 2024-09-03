@@ -1,5 +1,232 @@
 
 
+// // import { useState, useEffect } from "react";
+// // import axios from "../config/axios";
+// // import { useAuth } from "../context/UserContext";
+// // import { Country, State, City } from 'country-state-city';
+// // import { useNavigate } from "react-router-dom";
+// // import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
+// // import '../App.css'; // Import custom CSS
+
+// // export default function CentreProfileForm() {
+// //   const { user, dispatch } = useAuth();
+// //   const navigate = useNavigate();
+// //   const [contact, setContact] = useState("");
+// //   const [country, setCountry] = useState("");
+// //   const [state, setState] = useState("");
+// //   const [city, setCity] = useState("");
+// //   const [postalCode, setPostalCode] = useState("");
+// //   const [street, setStreet] = useState("");
+// //   const [door, setDoor] = useState("");
+// //   const [serverErrors, setServerErrors] = useState(null);
+
+// //   const [countries, setCountries] = useState([]);
+// //   const [states, setStates] = useState([]);
+// //   const [cities, setCities] = useState([]);
+// //   const [license, setLicense] = useState(null);
+
+// //   useEffect(() => {
+// //     const countriesData = Country.getAllCountries();
+// //     setCountries(countriesData);
+// //   }, []);
+
+// //   useEffect(() => {
+// //     if (country) {
+// //       const statesData = State.getStatesOfCountry(country);
+// //       setStates(statesData);
+// //     } else {
+// //       setStates([]);
+// //       setState("");
+// //     }
+// //   }, [country]);
+
+// //   useEffect(() => {
+// //     if (state) {
+// //       const citiesData = City.getCitiesOfState(country, state);
+// //       setCities(citiesData);
+// //     } else {
+// //       setCities([]);
+// //       setCity("");
+// //     }
+// //   }, [state]);
+
+// //   const handleCountryChange = (event) => {
+// //     setCountry(event.target.value);
+// //     setState("");
+// //     setCity("");
+// //   };
+
+// //   const handleStateChange = (event) => {
+// //     setState(event.target.value);
+// //     setCity("");
+// //   };
+
+// //   const handleCityChange = (event) => {
+// //     setCity(event.target.value);
+// //   };
+
+// //   const handleFileChange = (e) => {
+// //     setLicense(e.target.files[0]);
+// //   };
+
+// //   const handleSubmit = async (e) => {
+// //     e.preventDefault();
+// //     const centreFormData = new FormData();
+// //     centreFormData.append("contact", contact);
+// //     centreFormData.append("address[doorNo]", door);
+// //     centreFormData.append("address[street]", street);
+// //     centreFormData.append("address[country]", country);
+// //     centreFormData.append("address[state]", state);
+// //     centreFormData.append("address[city]", city);
+// //     centreFormData.append("address[postalCode]", postalCode);
+// //     centreFormData.append("license", license);
+
+// //     try {
+// //       const response = await axios.post("/register", centreFormData, {
+// //         headers: {
+// //           Authorization: localStorage.getItem("token"),
+// //           "Content-Type": "multipart/form-data"
+// //         }
+// //       });
+// //       console.log("centreProfile", response.data);
+
+// //       const updatedCentreResponse = await axios.get("/showAll", {
+// //         headers: {
+// //           Authorization: localStorage.getItem("token")
+// //         }
+// //       });
+
+// //       dispatch({ type: "CENTREPROFILE", payload: { centre: updatedCentreResponse.data } });
+// //       navigate("/dashboard");
+// //     } catch (error) {
+// //       console.error(error); // Log error message to console
+// //       setServerErrors(error.response?.data?.errors || ["An unexpected error occurred."]);
+// //     }
+// //   };
+
+// //   return (
+// //     <Container className="mt-5">
+// //       <Row>
+        
+// //         <Col md={8}>
+// //           <h2 className="text-center mb-4">Centre Profile Form</h2>
+// //           {serverErrors && (
+// //             <Alert color="danger">
+// //               <h4 className="alert-heading">Server Errors</h4>
+// //               <ul>
+// //                 {serverErrors.map((error, index) => (
+// //                   <li key={index}>{error.msg}</li>
+// //                 ))}
+// //               </ul>
+// //             </Alert>
+// //           )}
+// //           <Form onSubmit={handleSubmit}>
+// //             <FormGroup>
+// //               <Label for="contact">Contact:</Label>
+// //               <Input
+// //                 type="text"
+// //                 name="contact"
+// //                 id="contact"
+// //                 value={contact}
+// //                 onChange={e => setContact(e.target.value)}
+// //                 placeholder="Enter contact number"
+// //               />
+// //             </FormGroup>
+// //             <FormGroup>
+// //               <Label for="door">Door Number:</Label>
+// //               <Input
+// //                 type="text"
+// //                 name="door"
+// //                 id="door"
+// //                 value={door}
+// //                 onChange={e => setDoor(e.target.value)}
+// //                 placeholder="Enter door number"
+// //               />
+// //             </FormGroup>
+// //             <FormGroup>
+// //               <Label for="street">Street:</Label>
+// //               <Input
+// //                 type="text"
+// //                 name="street"
+// //                 id="street"
+// //                 value={street}
+// //                 onChange={e => setStreet(e.target.value)}
+// //                 placeholder="Enter street name"
+// //               />
+// //             </FormGroup>
+// //             <FormGroup>
+// //               <Label for="country">Country:</Label>
+// //               <Input
+// //                 type="select"
+// //                 name="country"
+// //                 id="country"
+// //                 value={country}
+// //                 onChange={handleCountryChange}
+// //               >
+// //                 <option value="">Select Country</option>
+// //                 {countries.map((country) => (
+// //                   <option key={country.isoCode} value={country.isoCode}>{country.name}</option>
+// //                 ))}
+// //               </Input>
+// //             </FormGroup>
+// //             <FormGroup>
+// //               <Label for="state">State:</Label>
+// //               <Input
+// //                 type="select"
+// //                 name="state"
+// //                 id="state"
+// //                 value={state}
+// //                 onChange={handleStateChange}
+// //               >
+// //                 <option value="">Select State</option>
+// //                 {states.map((state) => (
+// //                   <option key={state.isoCode} value={state.isoCode}>{state.name}</option>
+// //                 ))}
+// //               </Input>
+// //             </FormGroup>
+// //             <FormGroup>
+// //               <Label for="city">City:</Label>
+// //               <Input
+// //                 type="select"
+// //                 name="city"
+// //                 id="city"
+// //                 value={city}
+// //                 onChange={handleCityChange}
+// //               >
+// //                 <option value="">Select City</option>
+// //                 {cities.map((city) => (
+// //                   <option key={city.isoCode} value={city.isoCode}>{city.name}</option>
+// //                 ))}
+// //               </Input>
+// //             </FormGroup>
+// //             <FormGroup>
+// //               <Label for="postalCode">Postal Code:</Label>
+// //               <Input
+// //                 type="text"
+// //                 name="postalCode"
+// //                 id="postalCode"
+// //                 value={postalCode}
+// //                 onChange={e => setPostalCode(e.target.value)}
+// //                 placeholder="Enter postal code"
+// //               />
+// //             </FormGroup>
+// //             <FormGroup>
+// //               <Label for="license">Centre License:</Label>
+// //               <Input
+// //                 type="file"
+// //                 name="license"
+// //                 id="license"
+// //                 onChange={handleFileChange}
+// //               />
+// //             </FormGroup>
+// //             <Button type="submit" color="primary" block>Submit</Button>
+// //           </Form>
+// //         </Col>
+// //       </Row>
+// //     </Container>
+// //   );
+// // }
+
 import { useState, useEffect } from "react";
 import axios from "../config/axios";
 import { useAuth } from "../context/UserContext";
@@ -8,7 +235,7 @@ import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
 import '../App.css'; // Import custom CSS
 
-export default function CentreProfileForm() {
+export default function CentreProfileForm({toast} ) {
   const { user, dispatch } = useAuth();
   const navigate = useNavigate();
   const [contact, setContact] = useState("");
@@ -97,6 +324,7 @@ export default function CentreProfileForm() {
       });
 
       dispatch({ type: "CENTREPROFILE", payload: { centre: updatedCentreResponse.data } });
+      toast();
       navigate("/dashboard");
     } catch (error) {
       console.error(error); // Log error message to console
@@ -106,10 +334,9 @@ export default function CentreProfileForm() {
 
   return (
     <Container className="mt-5">
-      <Row>
-        
+      <Row className="justify-content-center">
         <Col md={8}>
-          <h2 className="text-center mb-4">Centre Profile Form</h2>
+          <h2 className="text-center mb-4" style={{fontFamily:"Cambria" ,fontSize:"bolder",fontWeight:"bolder",color:"red"}}>Centre Profile Form</h2>
           {serverErrors && (
             <Alert color="danger">
               <h4 className="alert-heading">Server Errors</h4>
@@ -122,7 +349,7 @@ export default function CentreProfileForm() {
           )}
           <Form onSubmit={handleSubmit}>
             <FormGroup>
-              <Label for="contact">Contact:</Label>
+              <Label for="contact" style={{fontFamily:"Cambria" ,fontSize:"bolder",fontWeight:"bolder"}}>Contact:</Label>
               <Input
                 type="text"
                 name="contact"
@@ -130,77 +357,97 @@ export default function CentreProfileForm() {
                 value={contact}
                 onChange={e => setContact(e.target.value)}
                 placeholder="Enter contact number"
+                className="form-control-custom"
               />
             </FormGroup>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="door" style={{fontFamily:"Cambria" ,fontSize:"bolder",fontWeight:"bolder"}}>Door Number:</Label>
+                  <Input
+                    type="text"
+                    name="door"
+                    id="door"
+                    value={door}
+                    onChange={e => setDoor(e.target.value)}
+                    placeholder="Enter door number"
+                    className="form-control-custom"
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="street" style={{fontFamily:"Cambria" ,fontSize:"bolder",fontWeight:"bolder"}}>Street:</Label>
+                  <Input
+                    type="text"
+                    name="street"
+                    id="street"
+                    value={street}
+                    onChange={e => setStreet(e.target.value)}
+                    placeholder="Enter street name"
+                    className="form-control-custom"
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
+            <Row form>
+              <Col md={4}>
+                <FormGroup>
+                  <Label for="country" style={{fontFamily:"Cambria" ,fontSize:"bolder",fontWeight:"bolder"}}>Country:</Label>
+                  <Input
+                    type="select"
+                    name="country"
+                    id="country"
+                    value={country}
+                    onChange={handleCountryChange}
+                    className="form-control-custom"
+                  >
+                    <option value="">Select Country</option>
+                    {countries.map((country) => (
+                      <option key={country.isoCode} value={country.isoCode}>{country.name}</option>
+                    ))}
+                  </Input>
+                </FormGroup>
+              </Col>
+              <Col md={4}>
+                <FormGroup>
+                  <Label for="state" style={{fontFamily:"Cambria" ,fontSize:"bolder",fontWeight:"bolder"}}>State:</Label>
+                  <Input
+                    type="select"
+                    name="state"
+                    id="state"
+                    value={state}
+                    onChange={handleStateChange}
+                    className="form-control-custom"
+                  >
+                    <option value="">Select State</option>
+                    {states.map((state) => (
+                      <option key={state.isoCode} value={state.isoCode}>{state.name}</option>
+                    ))}
+                  </Input>
+                </FormGroup>
+              </Col>
+              <Col md={4}>
+                <FormGroup>
+                  <Label for="city" style={{fontFamily:"Cambria" ,fontSize:"bolder",fontWeight:"bolder"}}>City:</Label>
+                  <Input
+                    type="select"
+                    name="city"
+                    id="city"
+                    value={city}
+                    onChange={handleCityChange}
+                    className="form-control-custom"
+                  >
+                    <option value="" >Select City</option>
+                    {cities.map((city) => (
+                      <option key={city.isoCode} value={city.isoCode}>{city.name}</option>
+                    ))}
+                  </Input>
+                </FormGroup>
+              </Col>
+            </Row>
             <FormGroup>
-              <Label for="door">Door Number:</Label>
-              <Input
-                type="text"
-                name="door"
-                id="door"
-                value={door}
-                onChange={e => setDoor(e.target.value)}
-                placeholder="Enter door number"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="street">Street:</Label>
-              <Input
-                type="text"
-                name="street"
-                id="street"
-                value={street}
-                onChange={e => setStreet(e.target.value)}
-                placeholder="Enter street name"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="country">Country:</Label>
-              <Input
-                type="select"
-                name="country"
-                id="country"
-                value={country}
-                onChange={handleCountryChange}
-              >
-                <option value="">Select Country</option>
-                {countries.map((country) => (
-                  <option key={country.isoCode} value={country.isoCode}>{country.name}</option>
-                ))}
-              </Input>
-            </FormGroup>
-            <FormGroup>
-              <Label for="state">State:</Label>
-              <Input
-                type="select"
-                name="state"
-                id="state"
-                value={state}
-                onChange={handleStateChange}
-              >
-                <option value="">Select State</option>
-                {states.map((state) => (
-                  <option key={state.isoCode} value={state.isoCode}>{state.name}</option>
-                ))}
-              </Input>
-            </FormGroup>
-            <FormGroup>
-              <Label for="city">City:</Label>
-              <Input
-                type="select"
-                name="city"
-                id="city"
-                value={city}
-                onChange={handleCityChange}
-              >
-                <option value="">Select City</option>
-                {cities.map((city) => (
-                  <option key={city.isoCode} value={city.isoCode}>{city.name}</option>
-                ))}
-              </Input>
-            </FormGroup>
-            <FormGroup>
-              <Label for="postalCode">Postal Code:</Label>
+              <Label for="postalCode" style={{fontFamily:"Cambria" ,fontSize:"bolder",fontWeight:"bolder"}}>Postal Code:</Label>
               <Input
                 type="text"
                 name="postalCode"
@@ -208,15 +455,17 @@ export default function CentreProfileForm() {
                 value={postalCode}
                 onChange={e => setPostalCode(e.target.value)}
                 placeholder="Enter postal code"
+                className="form-control-custom"
               />
             </FormGroup>
             <FormGroup>
-              <Label for="license">Centre License:</Label>
+              <Label for="license" style={{fontFamily:"Cambria" ,fontSize:"bolder",fontWeight:"bolder"}}>Centre License:</Label>
               <Input
                 type="file"
                 name="license"
                 id="license"
                 onChange={handleFileChange}
+                className="form-control-custom"
               />
             </FormGroup>
             <Button type="submit" color="primary" block>Submit</Button>
@@ -226,4 +475,5 @@ export default function CentreProfileForm() {
     </Container>
   );
 }
+
 
